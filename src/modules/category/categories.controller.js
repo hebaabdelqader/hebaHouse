@@ -3,7 +3,7 @@ import cloudinary from "../../services/cloudinary.js";
 import categoryModel from "../../../DB/models/category.js";
 import { pagination } from "../../services/pagination.js";
 import productModel from "../../../DB/models/product.model.js";
-import subcategoryModel from "../../../DB/models/subCategory.model.js";
+import subcategoryModel from "../../../DB/models/subcategory.model.js";
 export const getCategories = async (req, res) => {
     const { skip, limit } = pagination(req.query.page, req.query.limit);
     const categories = await categoryModel
