@@ -15,13 +15,11 @@ router.get(
     auth(endPoint.getAll),
     asyncHandler(categoriesController.getCategories)
   );
-  router.post(
-    "/",
-    validation(validators.createCategory),
-    auth(endPoint.create),
-    fileUpload(fileValidation.image).single("image"),
-    asyncHandler(categoriesController.createCategory)
-  );
+  router.post("/",auth(endPoint.create),
+  fileUpload(fileValidation.image).single("image"),
+   validation(validators.createCategory),
+   asyncHandler(categoriesController.createCategories))
+   
     router.get(
     "/:id",
     validation(validators.getSpecificCategory),

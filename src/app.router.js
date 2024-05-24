@@ -7,6 +7,7 @@ import cartRouter from './modules/cart/cart.router.js';
 import couponRoutr from './modules/coupon/coupon.router.js'
 import productsRouter from './modules/product/prodcut.router.js'
 import orderRouter from "./modules/order/order.router.js";
+import wishRouter from "./modules/wishlist/wishlistRouter.js"
 const initApp=(app,express)=>{
     app.use(express.json());
     connectDB();
@@ -20,6 +21,8 @@ const initApp=(app,express)=>{
      app.use('/coupon',couponRoutr);
      app.use("/order", orderRouter);
      app.use('/cart',cartRouter);
+     app.use('/wishlist',wishRouter)
+     
 app.get("*",(req,res)=>{
     return res.status(500).json({message:"page not found"});
 })

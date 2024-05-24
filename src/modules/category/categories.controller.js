@@ -13,7 +13,7 @@ export const getCategories = async (req, res) => {
       .populate("subcategory");
     return res.status(200).json({ message: "success", categories });
   };
-export const createCategories= async(req,res)=>{
+  export const createCategories= async(req,res)=>{
     const name=req.body.name.toLowerCase();
     if(await categoryModel.findOne({name})){
         return res.status(409).json({message:"category name already exists"})
@@ -21,7 +21,7 @@ export const createCategories= async(req,res)=>{
 
 
     const {secure_url,public_id} =await cloudinary.uploader.upload(req.file.path,{
-        folder: `${process.env.APP_NAME}/category`
+        folder: `${process.env.cloud_name}/category`
     });
 const cat=await categoryModel.create({name,slug:slugify(name),image:{secure_url,public_id},createdBy:req.user._id,updateBy:req.user._id})
 return res.status(201).json({message:"success",cat})
